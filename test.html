@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Web App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212;
+            color: #fff;
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        .card {
+            background-color: #1a1a1a;
+            border-color: #333;
+        }
+
+        .card-header {
+            background-color: #333;
+            border-bottom-color: #444;
+        }
+
+        .card-body {
+            background-color: #252525;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-center">API Web App</h1>
+                <p class="text-center">This app uses a free API to display data.</p>
+            </div>
+        </div>
+        <div class="row" id="data-row">
+            <!-- Data will be loaded here -->
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'https://jsonplaceholder.typicode.com/posts', // Sample API
+                type: 'GET',
+                success: function (data) {
+                    data.slice(0, 10).forEach(function (post) {
+                        $('#data-row').append(
+                            '<div class="col-md-4 mb-3">' +
+                            '<div class="card">' +
+                            '<div class="card-header">Post ' + post.id + '</div>' +
+                            '<div class="card-body">' +
+                            '<h5 class="card-title">' + post.title + '</h5>' +
+                            '<p class="card-text">' + post.body + '</p>' +
+                            '</div></div></div>'
+                        );
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
