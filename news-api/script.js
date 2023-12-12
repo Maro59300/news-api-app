@@ -1,7 +1,15 @@
+var apiKey = '&apiKey=d91a9446cf80433699e5929a9ab72017';
+var pageSize = 100;
+var page = 1;
+var country = 'us';
+var category = 'business';
+
+
+
 $(document).ready(function() {
     // Fetch news data from the API
     $.ajax({
-        url: 'https://newsapi.org/v2/top-headlines?country=us&apiKey=d91a9446cf80433699e5929a9ab72017',
+        url: 'https://newsapi.org/v2/top-headlines?country='+country + '&' + 'category' + category + '&' + page + '&' + pageSize + apiKey,
         type: 'GET',
         success: function(data) {
             if (data.articles && data.articles.length > 0) {
@@ -51,12 +59,18 @@ $(document).ready(function() {
     function populateCarousel(articles) {
         articles.forEach(function(article, index) {
             var isActive = index === 0 ? 'active' : '';
+            var isActiveOnly = 'active';
+            var indexOnly
             var carouselItem = $('<div class="carousel-item ' + isActive + '">')
                 .append('<img src="' + (article.urlToImage || 'img1.png') + '" alt="Slide Image">')
                 .append('<div class="carousel-caption d-none d-md-block">')
                 .append('<h5>' + article.title + '</h5>')
                 .append('<p>' + article.description + '</p>');
             $('#carousel-inner').append(carouselItem);
+            var carouselIndicator = $('<li data-target="#topNewsCarousel" data-slide-to="'+index+'" class="'+isActive+'"></li>');
+                
+                $('#carousel-indicators').append(carouselIndicator);
+            
         });
     }
 

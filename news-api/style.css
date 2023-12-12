@@ -4,6 +4,17 @@ body {
     font-family: 'Arial', sans-serif;
 }
 
+.carousel {
+    margin: 5% 15%;
+    
+}
+
+
+.carousel  img{
+    aspect-ratio: 16/9; /* Sets the aspect ratio of the image */
+    width: 090%; /* Sets the width of the image */
+}
+
 .navbar {
     margin-bottom: 20px;
 }
@@ -18,7 +29,8 @@ body {
 }
 
 .news-card img {
-    max-width: 100%;
+    aspect-ratio: 16/9;
+    width: 100%;
     height: auto;
     border-bottom: 2px solid #333; /* Adds a border below the image */
 }
