@@ -6,14 +6,17 @@ body {
 
 .carousel {
     margin: 5% 15%;
-    
+    overflow: hidden;
 }
 
 
 .carousel  img{
-    aspect-ratio: 16/9; /* Sets the aspect ratio of the image */
-    width: 090%; /* Sets the width of the image */
+    width: 100%; /* Responsive width */
+    height: 60%; /* Fixed height */
+    object-fit: fill; /* Cover the area without stretching */
 }
+
+ca
 
 .navbar {
     margin-bottom: 20px;
@@ -29,10 +32,14 @@ body {
 }
 
 .news-card img {
-    aspect-ratio: 16/9;
-    width: 100%;
     height: auto;
     border-bottom: 2px solid #333; /* Adds a border below the image */
+}
+
+.card-img-top {
+    width: 100%; /* Responsive width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Cover the area without stretching */
 }
 
 .card-body {

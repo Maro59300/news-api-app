@@ -1,4 +1,4 @@
-var apiKey = '&apiKey=d91a9446cf80433699e5929a9ab72017';
+ var apiKey = '&apiKey=d91a9446cf80433699e5929a9ab72017';
 var pageSize = 100;
 var page = 1;
 var country = 'us';
@@ -61,11 +61,9 @@ $(document).ready(function() {
             var isActive = index === 0 ? 'active' : '';
             var isActiveOnly = 'active';
             var indexOnly
-            var carouselItem = $('<div class="carousel-item ' + isActive + '">')
+            var carouselItem = $('<div class="carousel-item ' + isActive + ' rounded-lg">')
                 .append('<img src="' + (article.urlToImage || 'img1.png') + '" alt="Slide Image">')
-                .append('<div class="carousel-caption d-none d-md-block">')
-                .append('<h5>' + article.title + '</h5>')
-                .append('<p>' + article.description + '</p>');
+                .append('<div class="carousel-caption d-none d-md-block "><h5 class="font-weight-bolder">' + article.title + '</h5><p class="font-weight-bold">' + article.description + '</p></div>');
             $('#carousel-inner').append(carouselItem);
             var carouselIndicator = $('<li data-target="#topNewsCarousel" data-slide-to="'+index+'" class="'+isActive+'"></li>');
                 
