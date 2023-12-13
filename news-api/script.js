@@ -74,15 +74,21 @@ $(document).ready(function() {
 
     function populateNewsGrid(articles) {
         articles.forEach(function(article) {
-            var newsCard = $('<div class="col-md-4 mb-3">')
-                .append('<div class="card news-card" data-toggle="modal" data-target="#newsModal" data-title="' + article.title + '" data-content="' + article.content + '">')
-                .append('<img src="' + (article.urlToImage || 'img1.png') + '" class="card-img-top" alt="News Image">')
-                .append('<div class="card-body">')
-                .append('<h5 class="card-title">' + article.title + '</h5>')
-                .append('<p class="card-text">' + article.description + '</p>');
-            $('#news-container').append(newsCard);
+            var newsCardHtml = 
+                '<div class="col-md-4 mb-3">' +
+                    '<div class="card news-card">' +
+                        '<img src="' + (article.urlToImage || 'img1.png') + '" class="card-img-top" alt="News Image">' +
+                        '<div class="card-body">' +
+                            '<h5 class="card-title">' + article.title + '</h5>' +
+                            '<p class="card-text">' + article.description + '</p>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>';
+    
+            $('#news-container').append(newsCardHtml);
         });
     }
+    
 
     // Modal functionality
     $('#news-container').on('click', '.news-card', function() {

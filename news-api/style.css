@@ -5,7 +5,7 @@ body {
 }
 
 .carousel {
-    margin: 5% 15%;
+    margin: 5% 5%;
     overflow: hidden;
 }
 
@@ -13,47 +13,49 @@ body {
 .carousel  img{
     width: 100%; /* Responsive width */
     height: 60%; /* Fixed height */
-    object-fit: fill; /* Cover the area without stretching */
+    object-fit: cover; /* Cover the area without stretching */
 }
 
-ca
+.carousel-caption {
+    color: white !important;
+    text-shadow: 2px 2px 2px #000000;
+    z-index: 100;
+}
+
+
 
 .navbar {
     margin-bottom: 20px;
 }
 
 .news-card {
-    background-color: #1a1a1a;
-    transition: transform .2s; /* Smooth transition for hover effect */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    
 }
 
 .news-card:hover {
-    transform: scale(1.05); /* Slightly scale up on hover */
-}
-
-.news-card img {
-    height: auto;
-    border-bottom: 2px solid #333; /* Adds a border below the image */
+    transform: translateY(-5px); /* Slightly raise the card on hover */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
 }
 
 .card-img-top {
-    width: 100%; /* Responsive width */
-    height: 200px; /* Fixed height */
+    height: 200px; /* Fixed height for images */
     object-fit: cover; /* Cover the area without stretching */
 }
 
 .card-body {
-    padding: 15px;
+    padding: 15px; /* Consistent padding */
 }
 
 .card-title {
-    margin-bottom: 15px;
-    color: #4ba3ff; /* Stylish blue for titles */
+    color: #007bff; /* Bootstrap primary color for titles */
 }
 
 .card-text {
-    font-size: 0.9rem; /* Smaller text for descriptions */
+    color: #343a40; /* Bootstrap dark color for text */
 }
+
 
 .btn-primary {
     background-color: #007bff;
@@ -68,5 +70,6 @@ ca
 @media (max-width: 768px) {
     .news-card {
         margin-bottom: 15px;
+        margin: 5% 10%;
     }
 }
