@@ -16,7 +16,7 @@ $(document).ready(function() {
                 //store data in a separate Array
                 var articlesRaw = data.articles;
                 var badArticles = getBadArticles(articlesRaw);
-                var goodArticles = getGoodArticle(articlesRaw);
+                var goodArticles = getGoodArticles(articlesRaw);
                 
                 console.log(badArticles);
                 console.log(goodArticles);
@@ -34,24 +34,15 @@ $(document).ready(function() {
     //function to remove any bad article in articles 
 
     function getBadArticles(articles) {
-        var badArticles = [];
-        articles.forEach(function(article) {
-            if (article.urlToImage === null || article.content === "[Removed]") {
-                badArticles.push(article);
-                
-            }
+        return articles.filter(function(article) {
+            return !article.urlToImage || !article.title || !article.description || article.content === "[Removed]";
         });
-        return badArticles;
     }
-
-    function getGoodArticle(articles) {
-        var goodArticles = [];
-        articles.forEach(function(article) {
-            if (article.urlToImage !== null || article.content !== "[Removed]") {
-                goodArticles.push(article);
-            }
+    
+    function getGoodArticles(articles) {
+        return articles.filter(function(article) {
+            return article.urlToImage && article.title && article.description && article.content !== "[Removed]";
         });
-        return goodArticles;
     }
 
 
@@ -76,7 +67,7 @@ $(document).ready(function() {
         articles.forEach(function(article) {
             var newsCardHtml = 
                 '<div class="col-md-4 mb-3">' +
-                    '<div class="card news-card" data-toggle="modal" data-target="#newsModal" data-title="' + article.title + '" data-content="' + article.content + '">' +
+                    '<div class="card news-card" data-toggle="modal" data-target="#newsModal" data-title="' + article.title + '" data-content="' + article.description + '" data-url="' + article.url + '">' +
                         '<img src="' + (article.urlToImage || 'img1.png') + '" class="card-img-top" alt="News Image">' +
                         '<div class="card-body">' +
                             '<h5 class="card-title">' + article.title + '</h5>' +
@@ -92,10 +83,13 @@ $(document).ready(function() {
         $('#news-container').on('click', '.news-card', function() {
             var title = $(this).data('title');
             var content = $(this).data('content');
+            var url = $(this).data('url');
             $('#newsModalLabel').text(title);
-            $('#newsModal .modal-body').html(content);
+            $('#newsModal .modal-body').html('<p>' + content + '</p><p><a href="' + url + '" target="_blank" class="btn btn-primary mt-3">Read More</a></p>');
         });
+        
     }
+    
     
 
     // Modal functionality

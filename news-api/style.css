@@ -1,11 +1,13 @@
 body {
-    background-color: #121212;
+    background-color: #060404;
     color: #fff;
     font-family: 'Arial', sans-serif;
+    font-size: 1rem;
 }
 
 .carousel {
     margin: 5% 5%;
+    height: 60%;
     overflow: hidden;
 }
 
@@ -26,6 +28,7 @@ body {
 
 .navbar {
     margin-bottom: 20px;
+    background-color: #004085;
 }
 
 .news-card {
@@ -84,16 +87,42 @@ body {
 }
 
 #newsModal .modal-content {
-    background-color: #f8f9fa; /* Light background */
-    color: #333; /* Dark text for readability */
+    background-color: #f0f0f0; /* Custom background color */
+    color: #333; /* Text color */
+    height: 200%;
 }
 
 #newsModal .modal-header {
-    border-bottom: 1px solid #dee2e6; /* Light border for the header */
+    background-color: #007bff; /* Header background color */
+    color: #fff; /* Header text color */
 }
 
 #newsModal .modal-body {
-    padding: 20px; /* Spacing inside the modal body */
+    max-height: 400px; /* Maximum height */
+    overflow-y: auto; /* Make it scrollable */
+}
+
+#newsModal .btn-primary {
+    background-color: #007bff; /* Primary color */
+    border-color: #007bff; /* Border color */
+}
+
+#newsModal .btn-primary:hover {
+    background-color: #0056b3; /* Darker on hover */
+    border-color: #004085; /* Border color on hover */
+}
+
+#newsModal .modal-body p:first-of-type {
+    filter: blur(1.5px); /* Apply blur effect */
+    transition: filter 0.3s ease; /* Smooth transition for hover effect */
+}
+
+#newsModal .modal-body p:first-of-type:hover {
+    filter: blur(0); /* Remove blur on hover */
+}
+
+.close {
+    color: #fff; /* Close button color */
 }
 
 
@@ -102,4 +131,17 @@ body {
         margin-bottom: 7%;
         margin: 7% 10%;
     }
+    body {
+        font-size: 0.9rem; /* Smaller font size for mobile devices */
+    }
+
+    .card-title, .modal-title {
+        font-size: 1.2rem; /* Adjust title size for mobile */
+    }
+
+    .card-text, #newsModal .modal-body p {
+        font-size: 0.8rem; /* Adjust text size for mobile */
+    }
+    
+
 }
