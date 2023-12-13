@@ -29,10 +29,28 @@ body {
 }
 
 .news-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effect */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distributes space between and around content items */
+    height: 100%; /* Full height */
 }
+
+.card-body {
+    display: flex; /* Enables flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distributes space between and around content items */
+    height: calc(100% - 200px); /* Adjust based on image height */
+    overflow: hidden; /* Hides overflow */
+}
+
+.card-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 
 .news-card:hover {
     transform: translateY(-5px); /* Slightly raise the card on hover */
@@ -44,16 +62,14 @@ body {
     object-fit: cover; /* Cover the area without stretching */
 }
 
-.card-body {
-    padding: 15px; /* Consistent padding */
-}
-
 .card-title {
-    color: #007bff; /* Bootstrap primary color for titles */
+     /* Bootstrap primary color for text */
+    color: #007bff;
+
 }
 
 .card-text {
-    color: #343a40; /* Bootstrap dark color for text */
+    color: #007bff; /* Bootstrap dark color for text */
 }
 
 
@@ -67,9 +83,23 @@ body {
     border-color: #004085;
 }
 
+#newsModal .modal-content {
+    background-color: #f8f9fa; /* Light background */
+    color: #333; /* Dark text for readability */
+}
+
+#newsModal .modal-header {
+    border-bottom: 1px solid #dee2e6; /* Light border for the header */
+}
+
+#newsModal .modal-body {
+    padding: 20px; /* Spacing inside the modal body */
+}
+
+
 @media (max-width: 768px) {
     .news-card {
-        margin-bottom: 15px;
-        margin: 5% 10%;
+        margin-bottom: 7%;
+        margin: 7% 10%;
     }
 }

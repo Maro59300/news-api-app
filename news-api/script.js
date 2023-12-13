@@ -76,7 +76,7 @@ $(document).ready(function() {
         articles.forEach(function(article) {
             var newsCardHtml = 
                 '<div class="col-md-4 mb-3">' +
-                    '<div class="card news-card">' +
+                    '<div class="card news-card" data-toggle="modal" data-target="#newsModal" data-title="' + article.title + '" data-content="' + article.content + '">' +
                         '<img src="' + (article.urlToImage || 'img1.png') + '" class="card-img-top" alt="News Image">' +
                         '<div class="card-body">' +
                             '<h5 class="card-title">' + article.title + '</h5>' +
@@ -86,6 +86,14 @@ $(document).ready(function() {
                 '</div>';
     
             $('#news-container').append(newsCardHtml);
+        });
+    
+        // Modal functionality
+        $('#news-container').on('click', '.news-card', function() {
+            var title = $(this).data('title');
+            var content = $(this).data('content');
+            $('#newsModalLabel').text(title);
+            $('#newsModal .modal-body').html(content);
         });
     }
     
